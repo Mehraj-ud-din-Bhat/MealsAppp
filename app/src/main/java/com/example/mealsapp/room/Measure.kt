@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Measures")
 class Measure {
-     @PrimaryKey
+     @PrimaryKey(autoGenerate = true)
      var id:Int=0
 
      var mealID:Int=0
