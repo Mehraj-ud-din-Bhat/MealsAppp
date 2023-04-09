@@ -6,4 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.SearchMeals">
 
+    <EditText
+        android:id="@+id/searchEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Search Meals"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/saveMeals"
+        app:layout_constraintTop_toBottomOf="@id/searchEt"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/saveMeals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#9C27B0"
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Save Meals"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins"
+        />
+
+    <Button
+        android:id="@+id/retrieveMeals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#F44336"
+        android:text="Retrieve Meals"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textAllCaps="false"
+        android:layout_margin="6dp"
+        android:fontFamily="@font/poppins"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

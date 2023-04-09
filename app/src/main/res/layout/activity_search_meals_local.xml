@@ -4,6 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SearchMealsLocal">
+    tools:context=".ui.SearchMeals">
+
+    <EditText
+        android:id="@+id/searchEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Search Meals"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/retrieveMeals"
+        app:layout_constraintTop_toBottomOf="@id/searchEt"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <Button
+        android:id="@+id/retrieveMeals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#F44336"
+        android:text="Search"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textAllCaps="false"
+        android:layout_margin="6dp"
+        android:fontFamily="@font/poppins"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
