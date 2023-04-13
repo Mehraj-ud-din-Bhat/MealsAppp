@@ -23,16 +23,31 @@ class MainView : AppCompatActivity() {
         searchMealsByIng=findViewById(R.id.searchForMealsNetwork)
         searchMealsLocal=findViewById(R.id.searchforMealsLocal)
 
+
+        /**
+         *
+         * ON- CLICK OF THIS BUTTON MEALS ARE AUTOMATICALLY ADDED TO DB
+         */
+
+
         addMeals.setOnClickListener {
             showProgress("Saving a few meals for you...")
             viewModel.insertMeals()
         }
 
+        /**
+         *
+         * ON- CLICK OF THIS BUTTON IT TAKES TO SEARCH MEALS FROM WEB SERVICE
+         */
         searchMealsByIng.setOnClickListener {
 
             startActivity(Intent(MainView@this,SearchMeals::class.java))
         }
 
+        /**
+         *
+         * ON- CLICK OF THIS BUTTON IT TAKES TO SEARCH MEALS FROM LOCAL DB
+         */
 
         searchMealsLocal.setOnClickListener {
 
@@ -46,6 +61,10 @@ class MainView : AppCompatActivity() {
 
     }
 
+    /**
+     *
+     * SHOWS A PROGRESS BAR
+     */
     fun showProgress(msg:String)
     {
         try {
@@ -57,6 +76,12 @@ class MainView : AppCompatActivity() {
 
     }
 
+    /**
+     *
+     * HIDES THE PROGRESS BAR
+     *
+     *
+     */
     fun hideProgress()
     {
         if(mProgressDialog!=null)

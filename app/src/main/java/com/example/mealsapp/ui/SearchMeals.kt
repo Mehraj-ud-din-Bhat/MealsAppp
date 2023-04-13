@@ -44,6 +44,10 @@ class SearchMeals : AppCompatActivity() {
 
     }
 
+    /**
+     *
+     * RECYCLER
+     */
     fun initAdapter()
     {
         mealsAdapter= MealsAdapter(mealsList)
@@ -51,6 +55,12 @@ class SearchMeals : AppCompatActivity() {
         recyclerView.layoutManager=LinearLayoutManager(this)
 
     }
+
+    /***
+     *
+     *
+     * OBSERVES THE LIVE DATA CHANGES
+     */
     fun observeMealsLiveData()
     {
         viewModel.mealSearchLiveData.observe(this){

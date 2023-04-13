@@ -14,6 +14,7 @@ import com.example.mealsapp.room.Meal
 
 class MealsAdapter(val mealsList:ArrayList<Meal>) :RecyclerView.Adapter<MealsAdapter.MealViewHolder>() {
 
+
     class  MealViewHolder(val view:View):ViewHolder(view)
     {
         lateinit var  mealName:TextView

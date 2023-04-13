@@ -23,7 +23,8 @@ class MainViewModel : ViewModel() {
     fun insertMeals() {
         /**
          *
-         * ADD RANDOM MEALS IN DB from search c
+         * Inserts meals in db by searching the  web service
+         * it peforms search on "c" letter
          */
         GlobalScope.launch {
             val url = URL("https://www.themealdb.com/api/json/v1/1/search.php?f=c")
@@ -54,6 +55,10 @@ class MainViewModel : ViewModel() {
 
     fun formatJsonArray(string: String) {
         try {
+            /**
+             *
+             * FORMATS THE RESPONSE IN JSON OBJECT
+             */
             val jsonObject = JSONObject(string)
             addInDatabase((jsonObject.getJSONArray("meals")))
         }catch (e:java.lang.Exception){
@@ -67,6 +72,10 @@ class MainViewModel : ViewModel() {
 
     fun addInDatabase(list: JSONArray) {
 
+        /**
+         *
+         *ADDS THE LIST OF JSON RECORDS IN SQLITE DB USING ROOM LIBRARY
+         */
         for (i in 0 until list.length()) {
             val meal: JSONObject = list.get(i) as JSONObject
 
@@ -186,7 +195,7 @@ class MainViewModel : ViewModel() {
     fun searchMeals(searchQuery:String) {
         /**
          *
-         * ADD RANDOM MEALS IN DB from search c
+         * SEARCHES MEALS FROM THE WEB SERVICE API AS PER SEARCH TEXT ENTERED BY USER
          */
         GlobalScope.launch {
             val url = URL("https://www.themealdb.com/api/json/v1/1/search.php?s=$searchQuery")
@@ -219,9 +228,15 @@ class MainViewModel : ViewModel() {
 
     }
 
+    /**
+     *
+     *
+     * FORMATS SEARCH RESPONSE AND UPDATES LIVE DATA
+     */
   private  fun formatSearchResponse(string: String) {
         val jsonObject = JSONObject(string)
         if(jsonObject.has("meals"))
+
         {
             if(jsonObject.get(("meals")) is JSONArray) {
                 mealSearchLiveData.postValue(parseJsonArray(jsonObject.getJSONArray("meals")))
@@ -233,6 +248,10 @@ class MainViewModel : ViewModel() {
 
     }
 
+    /**
+     *
+     * CONVERTS THE SEARCH JSON ARRAY INTO ARRAY LIST OF MEALS FOR EASY ACCESS
+     */
 
    private fun parseJsonArray(list: JSONArray):ArrayList<Meal>{
         var mealList=ArrayList<Meal>()
@@ -343,6 +362,10 @@ class MainViewModel : ViewModel() {
     }
 
 
+    /**
+     *
+     * SAVES A MEAL IN DATA BASE
+     */
     fun saveMeal(mealModel:Meal)
     {
         try {
@@ -358,7 +381,7 @@ class MainViewModel : ViewModel() {
     /**
      *
      *
-     * SEARCH MEALS
+     * SEARCH MEALS FROM THE SAVED MEALS
      */
 
 

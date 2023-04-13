@@ -30,10 +30,18 @@ class SearchMealsLocal : AppCompatActivity() {
         btnGetMeals=findViewById(R.id.retrieveMeals)
         initAdapter()
         btnGetMeals.setOnClickListener {
-            search()
+            if(this!=null) {
+                search()
+            }
         }
         observeMealsLiveData()
     }
+
+    /**
+     *
+     *
+     * THIS METHOD IS USED TO INIT THE RECYCLER VIEW AND SET THE ADAPTER TO IT
+     */
     fun initAdapter()
     {
         mealsAdapter= MealsAdapter(mealsList)
@@ -41,14 +49,25 @@ class SearchMealsLocal : AppCompatActivity() {
         recyclerView.layoutManager= LinearLayoutManager(this)
 
     }
+
+    /**
+     *
+     * THiS METHOD PERFORMS THE LOCAL DB SEARCH
+     */
     fun search()
     {
 
         if(searchEt.text.toString().length>0) {
             showProgress("Searching")
-            viewModel.searchMeals(searchEt.text.toString())
+            viewModel.searchMeal(searchEt.text.toString())
         }
     }
+
+    /***
+     *
+     *
+     * OBSERVES THE LIVE DATA CHANGES
+     */
     fun observeMealsLiveData()
     {
         viewModel.mealSearchLiveData.observe(this){
@@ -68,6 +87,7 @@ class SearchMealsLocal : AppCompatActivity() {
     }
     fun showProgress(msg:String)
     {
+
         try {
             mProgressDialog= ProgressDialog(this)
             mProgressDialog.setTitle("Please wait")

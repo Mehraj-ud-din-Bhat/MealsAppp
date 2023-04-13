@@ -22,13 +22,20 @@ interface MealDAO {
     fun getIngredients(mealID:Int):List<Ingredient>
     @Query("SELECT * from Measures where mealID=:mealID")
     fun getMeasures(mealID:Int):List<Measure>
-    @Query("SELECT M.* FROM Meal M JOIN Ingredients I on I.mealID=M.mealID JOIN Measures MM ON M.mealID=MM.mealID Where " +
+    @Query("SELECT M.* FROM Meal M  Where " +
+            "M.strMeal like '%'||:s||'%' OR "+
             "M.strMeal like '%' || :s || '%' OR " +
-            "M.strArea like '%' || :s || '%' OR " +
-            "M.strCategory like '%' || :s || '%' OR " +
-            "M.strInstructions like '%' || :s || '%' OR " +
-            "MM.measure like '%' || :s || '%' OR " +
-            "I.ingredient like '%' || :s || '%'")
-    fun searchMeals(s:String):List<Meal>
+    "M.strArea like '%' || :s || '%' OR " +
+    "M.strCategory like '%' || :s || '%' OR " +
+    "M.strInstructions like '%' || :s || '%' "
 
+    )
+    fun searchMeals(s:String):List<Meal>
+//    "SELECT M.* FROM Meal M JOIN Ingredients I on I.mealID=M.mealID JOIN Measures MM ON M.mealID=MM.mealID Where " +
+//    "M.strMeal like '%' || :s || '%' OR " +
+//    "M.strArea like '%' || :s || '%' OR " +
+//    "M.strCategory like '%' || :s || '%' OR " +
+//    "M.strInstructions like '%' || :s || '%' OR " +
+//    "MM.measure like '%' || :s || '%' OR " +
+//    "I.ingredient like '%' || :s || '%'"
 }
